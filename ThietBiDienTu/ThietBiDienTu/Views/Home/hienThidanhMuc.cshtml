@@ -1,0 +1,41 @@
+﻿@using ThietBiDienTu.Models;
+@model List<LoaiSanPham>
+
+<style>
+    /* CSS cho danh mục sản phẩm */
+    .item-danhmuc {
+        position: relative;
+        transition: background-color 0.3s;
+    }
+
+    .item-danhmuc:hover {
+        background-color: #e0e0e0;
+    }
+
+    .item-danhmuc a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        display: block;
+        padding: 10px;
+    }
+
+    .item-danhmuc > a:hover {
+        color: #0866FF;
+        font-weight: bold;
+    }
+
+    .item-danhmuc:last-child {
+        border-bottom: none;
+    }
+</style>
+
+
+<ul class="nav flex-column">
+    @foreach (LoaiSanPham l in Model)
+{
+    <li class="py-2 pl-3 nav-item item-danhmuc" style="background: #D3D3E5; border-bottom: solid #f4f4f4; border-width: 4px;">
+        <a href="/Home/Index?ml=@l.MaLoai">@l.TenLoai</a>
+    </li>
+}
+</ul>

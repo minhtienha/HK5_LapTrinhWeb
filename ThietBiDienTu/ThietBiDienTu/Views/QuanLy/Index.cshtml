@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<ThietBiDienTu.Models.SanPham>
+@using PagedList.Mvc;
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .pagination a {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #3498db;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .pagination a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+    .pagination .active a {
+        background-color: #3498db;
+        color: white;
+        border: 1px solid #3498db;
+    }
+</style>
+
+<h2>DANH SÁCH SẢN PHẨM</h2>
+<p>
+    @Html.ActionLink("Thêm Sản Phẩm", "ThemSanPham", null, new { @class = "btn btn-primary" })
+</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-danger">
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Giá Bán</th>
+                <th>Mô Tả</th>
+                <th>Hình Ảnh</th>
+                <th>Số Lượng Tồn</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td>@string.Format("{0:N0} VND", item.GiaBan)</td>
+                    <td>@item.MoTa</td>
+                    <td>
+                        @{
+                            string imagePath = null;
+                            string[] extensions = { ".jpg", ".png", ".jpeg" };
+                            foreach (var ext in extensions)
+                            {
+                                var filePath = Server.MapPath("~/Content/HinhAnhSP/" + item.HinhAnh + ext);
+                                if (System.IO.File.Exists(filePath))
+                                {
+                                    imagePath = Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh + ext);
+                                    break;
+                                }
+                            }
+                        }
+                        <img style="width: 120px" src="@imagePath" />
+                    </td>
+                    <td>@item.SoLuongTon</td>
+                    <td>
+                        @Html.ActionLink("Sửa", "SuaSanPham", new { masp = item.MaSP }, new { @class = "btn btn-warning" }) |
+                        <form action="@Url.Action("XoaSanPham", "NhanVien", new { masp = item.MaSP })" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<!-- Helper phân trang -->
+<div class="w-100 d-flex justify-content-center">
+    <ul class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </ul>
+</div>

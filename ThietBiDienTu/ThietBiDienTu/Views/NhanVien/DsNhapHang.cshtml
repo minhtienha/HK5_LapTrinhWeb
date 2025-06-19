@@ -1,0 +1,46 @@
+﻿@model List<ThietBiDienTu.Models.NhapHang>
+
+@{
+    ViewBag.Title = "Danh Sách Đơn Hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2>Danh Sách Đơn Hàng</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã Đơn Nhập Hàng</th>
+                <th>Mã NCC</th>
+                <th>Mã NV</th>
+                <th>Ngày nhập</th>
+                <th>Tổng tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nh in Model)
+            {
+                <tr>
+                    <td>@nh.MaNhap</td>
+                    <td>@nh.MaNCC</td>
+                    <td>@nh.MaNV</td>
+                    <td>@(nh.NgayNhap.GetValueOrDefault().ToString("yyyy-MM-dd"))</td>
+                    <td>@string.Format("{0:N0} VND", nh.TongTien)</td>
+                    <td>
+                        @using (Html.BeginForm("XemChiTietNhapHang", "NhanVien", FormMethod.Get))
+                        {
+                            @Html.Hidden("maNhapHang", nh.MaNhap)
+                            <button type="submit" class="btn btn-primary btn-sm">Xem Chi Tiết</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Không có đơn nhập hàng nào.</p>
+}

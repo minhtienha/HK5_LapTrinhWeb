@@ -1,0 +1,49 @@
+﻿@model List<ThietBiDienTu.Models.ThongKe>
+
+@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<form method="get" action="@Url.Action("ThongKe", "QuanLy")">
+    <div class="form-inline">
+        <label for="fromDate">Từ ngày:</label>
+        <input type="date" id="fromDate" name="fromDate" class="form-control mx-2" />
+
+        <label for="toDate">Đến ngày:</label>
+        <input type="date" id="toDate" name="toDate" class="form-control mx-2" />
+
+        <button type="submit" class="btn btn-primary">Lọc</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng Đặt</th>
+            <th>Tổng Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var sp in Model)
+            {
+                <tr>
+                    <td>@sp.MaSP</td>
+                    <td>@sp.TenSP</td>
+                    <td>@sp.SoLuongDat</td>
+                    <td>@string.Format("{0:N0} VNĐ", sp.TongTien)</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Không có dữ liệu</td>
+            </tr>
+        }
+    </tbody>
+</table>

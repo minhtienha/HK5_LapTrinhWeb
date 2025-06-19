@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<ThietBiDienTu.Models.ThongKe>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .pagination a {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #3498db;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .pagination a:hover {
+                background-color: #3498db;
+                color: white;
+            }
+
+        .pagination .active a {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+</style>
+
+<form method="get" action="@Url.Action("ThongKe", "NhanVien")">
+    <div class="form-inline">
+        <label for="fromDate">Từ ngày:</label>
+        <input type="date" id="fromDate" name="fromDate" class="form-control mx-2" />
+
+        <label for="toDate">Đến ngày:</label>
+        <input type="date" id="toDate" name="toDate" class="form-control mx-2" />
+
+        <button type="submit" class="btn btn-primary">Lọc</button>
+    </div>
+</form>
+@if (ViewBag.TongTienToanBo != null)
+{
+    <p class="text-danger font-weight-bold">Tổng Tiền: @string.Format("{0:N0} VND", ViewBag.TongTienToanBo)</p>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng Đặt</th>
+            <th>Tổng Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var sp in Model)
+            {
+                <tr>
+                    <td>@sp.MaSP</td>
+                    <td>@sp.TenSP</td>
+                    <td>@sp.SoLuongDat</td>
+                    <td>@string.Format("{0:N0} VNĐ", sp.TongTien)</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Không có dữ liệu</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- Helper phân trang -->
+<div class="w-100 d-flex justify-content-center">
+    <ul class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </ul>
+</div>

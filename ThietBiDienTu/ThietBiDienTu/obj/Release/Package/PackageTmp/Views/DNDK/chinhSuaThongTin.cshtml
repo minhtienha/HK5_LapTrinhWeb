@@ -1,0 +1,61 @@
+﻿@model ThietBiDienTu.Models.KhachHang
+
+<div class="container mt-4">
+    <h2>Chỉnh Sửa Thông Tin Người Dùng</h2>
+
+    <form method="post" action="/DNDK/ChinhSuaThongTin">
+        <fieldset class="border p-4">
+            <legend class="w-auto">Thông Tin Khách Hàng</legend>
+
+            <input type="hidden" name="MaKH" value="@Model.MaKH" />
+
+            <div class="form-group">
+                <label for="hoTen" class="font-weight-bold">Họ Tên:</label>
+                <input type="text" class="form-control" id="hoTen" name="HoTen" value="@Model.HoTen" required />
+            </div>
+
+            <div class="form-group">
+                <label for="ngaySinh" class="font-weight-bold">Ngày Sinh:</label>
+                <input type="text" class="form-control" id="ngaySinh" name="NgaySinh" value="@String.Format("{0:dd/MM/yyyy}", Model.NgaySinh)" required />
+            </div>
+
+            <div class="form-group">
+                <label for="gioiTinh" class="font-weight-bold">Giới Tính:</label>
+                <select class="form-control" id="gioiTinh" name="GioiTinh" required>
+                    <option value="Nam" @(Model.GioiTinh == "Nam" ? "selected" : "")>Nam</option>
+                    <option value="Nữ" @(Model.GioiTinh == "Nữ" ? "selected" : "")>Nữ</option>
+                    <option value="Khác" @(Model.GioiTinh == "Khác" ? "selected" : "")>Khác</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dienThoai" class="font-weight-bold">Điện Thoại:</label>
+                <input type="tel" class="form-control" id="dienThoai" name="DienThoai" value="@Model.DienThoai" required />
+            </div>
+
+            <div class="form-group">
+                <label for="taiKhoan" class="font-weight-bold">Tài Khoản:</label>
+                <input type="text" class="form-control" id="taiKhoan" name="TaiKhoan" value="@Model.TaiKhoan" required />
+            </div>
+
+            <div class="form-group">
+                <label for="matKhau" class="font-weight-bold">Mật Khẩu:</label>
+                <input type="password" class="form-control" id="matKhau" name="MatKhau" value="@Model.MatKhau" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="font-weight-bold">Email:</label>
+                <input type="email" class="form-control" id="email" name="Email" value="@Model.Email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="diaChi" class="font-weight-bold">Địa Chỉ:</label>
+                <input type="text" class="form-control" id="diaChi" name="DiaChi" value="@Model.DiaChi" required />
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Lưu Thông Tin</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

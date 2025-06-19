@@ -1,0 +1,85 @@
+﻿@model ThietBiDienTu.Models.NhanVien
+
+@{
+    ViewBag.Title = "Sửa Nhân Viên";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2 class="text-center">Sửa Nhân Viên</h2>
+
+@using (Html.BeginForm("SuaNhanVien", "QuanLy", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container p-4 border rounded shadow-sm" style="background-color: #f9f9f9;">
+        <div class="form-group row">
+            <label for="MaNV" class="col-sm-2 col-form-label font-weight-bold">Mã Nhân Viên</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="MaNV" name="MaNV" value="@Model.MaNV" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="HoTen" class="col-sm-2 col-form-label font-weight-bold">Họ Tên</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.HoTen, new { htmlAttributes = new { @class = "form-control", id = "HoTen" } })
+                @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="NgaySinh" class="col-sm-2 col-form-label font-weight-bold">Ngày Sinh</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "NgaySinh" })
+                @Html.ValidationMessageFor(m => m.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="GioiTinh" class="col-sm-2 col-form-label font-weight-bold">Giới Tính</label>
+            <div class="col-sm-10">
+                @Html.DropDownListFor(m => m.GioiTinh, new SelectList(new[] { "Nam", "Nữ" }, "Giới tính"), "Chọn giới tính", new { @class = "form-control", id = "GioiTinh" })
+                @Html.ValidationMessageFor(m => m.GioiTinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="DienThoai" class="col-sm-2 col-form-label font-weight-bold">Số Điện Thoại</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.DienThoai, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập số điện thoại", id = "DienThoai" } })
+                @Html.ValidationMessageFor(m => m.DienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Email" class="col-sm-2 col-form-label font-weight-bold">Email</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập email", id = "Email" } })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="ChucVu" class="col-sm-2 col-form-label font-weight-bold">Chức Vụ</label>
+            <div class="col-sm-10">
+                @Html.DropDownListFor(m => m.ChucVu, new SelectList(new[] { "Admin", "Nhân viên" }, "Chức vụ"), "Chọn chức vụ", new { @class = "form-control", id = "ChucVu" })
+                @Html.ValidationMessageFor(m => m.ChucVu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="MatKhau" class="col-sm-2 col-form-label font-weight-bold">Mật Khẩu</label>
+            <div class="col-sm-10">
+                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu", id = "MatKhau" })
+                @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary ml-2" })
+            </div>
+        </div>
+    </div>
+}

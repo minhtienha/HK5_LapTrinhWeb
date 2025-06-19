@@ -1,0 +1,51 @@
+﻿@model ThietBiDienTu.Models.KhachHang
+
+@{
+    ViewBag.Title = "Sửa Khách Hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2>Sửa Khách Hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.Label("Mã KH")
+        <input type="text" class="form-control" value="@Model.MaKH" readonly />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.HoTen)
+        @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NgaySinh)
+        @Html.TextBoxFor(m => m.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.GioiTinh)
+        @Html.DropDownListFor(m => m.GioiTinh, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Nam", Value = "Nam" },
+            new SelectListItem { Text = "Nữ", Value = "Nữ" }
+        }, "--Chọn Giới Tính--", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DienThoai)
+        @Html.TextBoxFor(m => m.DienThoai, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DiaChi)
+        @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MatKhau)
+        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Lưu</button>
+}

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Nhập Hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2>Nhập Hàng</h2>
+
+@using (Html.BeginForm("NhapHang", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="masp">Chọn Sản Phẩm:</label>
+        <select class="form-control" id="masp" name="masp" required>
+            <option value="">-- Chọn sản phẩm --</option>
+            @foreach (var product in ViewBag.SanPhams)
+            {
+                <option value="@product.MaSP">@product.TenSP</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="mancc">Chọn Nhà Cung Cấp:</label>
+        <select class="form-control" id="mancc" name="mancc" required>
+            <option value="">-- Chọn nhà cung cấp --</option>
+            @foreach (var ncc in ViewBag.NhaCungCap)
+            {
+                <option value="@ncc.MaNCC">@ncc.TenNCC</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="soluong">Số Lượng Nhập:</label>
+        <input type="number" class="form-control" id="soluong" name="soluong" min="1" placeholder="Nhập số lượng" required />
+    </div>
+
+    <div class="form-group">
+        <label for="giaNhap">Giá Nhập:</label>
+        <input type="number" class="form-control" id="giaNhap" name="giaNhap" placeholder="Nhập giá nhập" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Nhập Hàng</button>
+}

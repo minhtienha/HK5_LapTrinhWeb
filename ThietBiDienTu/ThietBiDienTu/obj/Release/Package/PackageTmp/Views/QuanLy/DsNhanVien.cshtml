@@ -1,0 +1,44 @@
+﻿@model List<ThietBiDienTu.Models.NhanVien>
+
+@{
+    ViewBag.Title = "DsNhanVien";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2>Danh sách nhân viên</h2>
+<p>
+    @Html.ActionLink("Thêm Nhân Viên", "ThemNhanVien", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã NV</th>
+            <th>Họ Tên</th>
+            <th>Ngày Sinh</th>
+            <th>Giới Tính</th>
+            <th>Điện Thoại</th>
+            <th>Email</th>
+            <th>Chức Vụ</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nv in Model)
+        {
+            <tr>
+                <td>@nv.MaNV</td>
+                <td>@nv.HoTen</td>
+                <td>@(nv.NgaySinh.ToString().Split(' ')[0])</td>
+                <td>@nv.GioiTinh</td>
+                <td>@nv.DienThoai</td>
+                <td>@nv.Email</td>
+                <td>@nv.ChucVu</td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaNhanVien", new { manv = nv.MaNV }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Xoá", "XoaNhanVien", new { manv = nv.MaNV }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Bạn có chắc muốn xoá nhân viên này?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

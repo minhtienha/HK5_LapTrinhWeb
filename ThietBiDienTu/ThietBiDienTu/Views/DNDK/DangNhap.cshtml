@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Đăng nhập</h2>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Message
+        </div>
+    }
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+
+    <form class="w-50 mx-auto" action="@Url.Action("DangNhap", "DNDK")" method="post">
+        <div class="mb-3">
+            <label for="" class="form-label" style="font-weight: bold;">Số điện thoại / Email</label>
+            <input type="text" name="tk" class="form-control" id="" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" style="font-weight: bold;">Mật khẩu</label>
+            <input type="password" name="mk" class="form-control" id="" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </form>
+</div>
+

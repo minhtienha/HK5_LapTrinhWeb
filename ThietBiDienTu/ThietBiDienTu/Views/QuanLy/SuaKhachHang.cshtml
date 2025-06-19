@@ -1,0 +1,82 @@
+﻿@model ThietBiDienTu.Models.KhachHang
+
+@{
+    ViewBag.Title = "Sửa Khách Hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2 class="text-center">Sửa Khách Hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container p-4 border rounded shadow-sm" style="background-color: #f9f9f9;">
+        <div class="form-group row">
+            @Html.Label("Mã KH", new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" value="@Model.MaKH" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.HoTen, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.NgaySinh, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.NgaySinh, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.GioiTinh, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.DropDownListFor(m => m.GioiTinh, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Nam", Value = "Nam" },
+                    new SelectListItem { Text = "Nữ", Value = "Nữ" }
+                }, "--Chọn Giới Tính--", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.DienThoai, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.DienThoai, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Email, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.DiaChi, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ" })
+            </div>
+        </div>
+
+        @*<div class="form-group row">
+            @Html.LabelFor(m => m.MatKhau, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+            </div>
+        </div>*@
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-success">Lưu</button>
+                @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary ml-2" })
+            </div>
+        </div>
+    </div>
+}

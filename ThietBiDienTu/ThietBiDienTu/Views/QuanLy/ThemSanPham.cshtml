@@ -1,0 +1,85 @@
+﻿@model ThietBiDienTu.Models.SanPham
+
+@{
+    ViewBag.Title = "Sửa Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2 class="text-center">Thêm Sản Phẩm</h2>
+
+@using (Html.BeginForm("ThemSanPham", "QuanLy", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container p-4 border rounded shadow-sm" style="background-color: #f9f9f9;">
+        <div class="form-group row">
+            <label for="MaSP" class="col-sm-2 col-form-label font-weight-bold">Mã sản phẩm</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="MaSP" value="@ViewBag.MaSP" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="TenSP" class="col-sm-2 col-form-label font-weight-bold">Tên sản phẩm</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="GiaBan" class="col-sm-2 col-form-label font-weight-bold">Giá bán</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="MoTa" class="col-sm-2 col-form-label font-weight-bold">Mô tả</label>
+            <div class="col-sm-10">
+                @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", rows = 3 })
+                @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="HinhAnh" class="col-sm-2 col-form-label font-weight-bold">Hình ảnh</label>
+            <div class="col-sm-10">
+                <input type="file" name="HinhAnh" class="form-control-file" />
+                <small class="form-text text-muted">Chọn ảnh sản phẩm (Nếu muốn thay đổi)</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="SoLuongTon" class="col-sm-2 col-form-label font-weight-bold">Số lượng tồn</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="MaLoai" class="col-sm-2 col-form-label font-weight-bold">Loại sản phẩm</label>
+            <div class="col-sm-10">
+                @Html.DropDownList("MaLoai", ViewBag.MaLoai as SelectList, "Chọn loại sản phẩm", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="MaNCC" class="col-sm-2 col-form-label font-weight-bold">Nhà cung cấp</label>
+            <div class="col-sm-10">
+                @Html.DropDownList("MaNCC", ViewBag.MaNCC as SelectList, "Chọn nhà cung cấp", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+                @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary ml-2" })
+            </div>
+        </div>
+    </div>
+}

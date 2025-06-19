@@ -1,0 +1,43 @@
+﻿@model List<ThietBiDienTu.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2>Danh sách khách hàng</h2>
+<p>
+    @Html.ActionLink("Thêm Khách Hàng", "ThemKhachHang", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã KH</th>
+            <th>Họ Tên</th>
+            <th>Ngày Sinh</th>
+            <th>Giới Tính</th>
+            <th>Điện Thoại</th>
+            <th>Email</th>
+            <th>Địa Chỉ</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kh in Model)
+        {
+            <tr>
+                <td>@kh.MaKH</td>
+                <td>@kh.HoTen</td>
+                <td>@(kh.NgaySinh.ToString().Split(' ')[0])</td>
+                <td>@kh.GioiTinh</td>
+                <td>@kh.DienThoai</td>
+                <td>@kh.Email</td>
+                <td>@kh.DiaChi</td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaKhachHang", new { makh = kh.MaKH }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Xoá", "XoaKhachHang", new { makh = kh.MaKH }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Bạn có chắc muốn xoá khách hàng này?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

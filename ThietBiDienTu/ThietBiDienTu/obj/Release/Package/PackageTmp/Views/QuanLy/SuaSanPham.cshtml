@@ -1,0 +1,45 @@
+﻿@model ThietBiDienTu.Models.SanPham
+
+@{
+    ViewBag.Title = "Sửa Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h2>Sửa Sản Phẩm</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenSP)
+        @Html.EditorFor(model => model.TenSP)
+        @Html.ValidationMessageFor(model => model.TenSP)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.GiaBan)
+        @Html.EditorFor(model => model.GiaBan)
+        @Html.ValidationMessageFor(model => model.GiaBan)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MoTa)
+        @Html.EditorFor(model => model.MoTa)
+        @Html.ValidationMessageFor(model => model.MoTa)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaLoai)
+        @Html.DropDownListFor(model => model.MaLoai, (SelectList)ViewBag.MaLoai)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaNCC)
+        @Html.DropDownListFor(model => model.MaNCC, (SelectList)ViewBag.MaNCC)
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}
+@Html.ActionLink("Chỉnh sửa hình ảnh sản phẩm", "NhieuAnhSanPham", "QuanLy", new { masp = Model.MaSP }, new { @class = "btn btn-secondary" })

@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Admin\Desktop\DemoWebT</_PublishTargetUrl>
+    <History>True|2024-12-02T03:30:27.3160265Z||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>10/09/2024 21:31:07</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/09/2024 21:30:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>10/09/2024 21:31:06</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>10/18/2024 23:43:47</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>10/18/2024 23:43:47</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/09/2024 21:31:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/09/2024 21:31:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/09/2024 21:31:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/09/2024 21:31:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>10/09/2024 21:31:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>10/09/2024 21:31:07</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="bin/ThietBiDienTu.dll">
+      <publishTime>12/02/2024 10:30:26</publishTime>
+    </File>
+    <File Include="bin/ThietBiDienTu.pdb">
+      <publishTime>12/02/2024 10:30:26</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>10/09/2024 21:31:07</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-grid.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-grid.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-grid.min.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-grid.min.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-reboot.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-reboot.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-reboot.min.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap-reboot.min.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.min.css">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/css/bootstrap.min.css.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.bundle.js">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.bundle.js.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.bundle.min.js">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.bundle.min.js.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.js">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.js.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.min.js">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/bootstrap.min.js.map">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/bootstrap/js/jquery-3.3.1.min.js">
+      <publishTime>10/09/2024 21:32:36</publishTime>
+    </File>
+    <File Include="Content/CSS/style.css">
+      <publishTime>11/15/2024 14:15:15</publishTime>
+    </File>
+    <File Include="Content/HinhAnh/bannerDienThoai.jpg">
+      <publishTime>10/09/2024 23:33:57</publishTime>
+    </File>
+    <File Include="Content/HinhAnh/logoTanTien1.png">
+      <publishTime>10/09/2024 21:53:05</publishTime>
+    </File>
+    <File Include="Content/HinhAnh/qrThanhToan.jpg">
+      <publishTime>11/15/2024 10:34:45</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_1.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_10.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_11.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_12.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_13.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_14.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_15.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_16.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_17.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_18.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_19.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_2.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_20.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_21.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_22.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_23.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_24.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_25.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_26.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_27.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_28.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_29.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_3.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_30.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_4.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_5.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_6.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_7.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_8.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/HinhAnhSP/url_image_9.jpg">
+      <publishTime>10/18/2024 23:13:00</publishTime>
+    </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>10/18/2024 23:43:48</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>10/09/2024 21:30:55</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.accordion.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.all.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.autocomplete.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.base.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.button.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.core.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.datepicker.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.dialog.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.progressbar.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.resizable.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.selectable.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.slider.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.tabs.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.theme.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_222222_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_454545_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_888888_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery-ui.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.accordion.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.autocomplete.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.button.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.core.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.datepicker.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.dialog.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.progressbar.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.resizable.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.selectable.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.slider.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.tabs.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.theme.min.css">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/09/2024 21:30:55</publishTime>
+    </File>
+    <File Include="Models/DataClasses1.dbml">
+      <publishTime>11/18/2024 02:36:39</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/18/2024 23:43:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.2.js">
+      <publishTime>10/09/2024 21:31:02</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.2.min.js">
+      <publishTime>10/09/2024 21:31:02</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.24.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.24.min.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>10/09/2024 21:31:03</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>10/09/2024 21:31:03</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>10/09/2024 21:31:04</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.2.0.debug.js">
+      <publishTime>10/09/2024 21:31:08</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.2.0.js">
+      <publishTime>10/09/2024 21:31:08</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>10/09/2024 21:31:05</publishTime>
+    </File>
+    <File Include="Views/DatHang/ChinhSuaGioHang.cshtml">
+      <publishTime>11/15/2024 11:47:04</publishTime>
+    </File>
+    <File Include="Views/DatHang/chiTietLichSuDatHang.cshtml">
+      <publishTime>11/15/2024 13:08:01</publishTime>
+    </File>
+    <File Include="Views/DatHang/DatHang.cshtml">
+      <publishTime>11/17/2024 20:00:41</publishTime>
+    </File>
+    <File Include="Views/DatHang/lichSuDatHang.cshtml">
+      <publishTime>11/17/2024 10:04:49</publishTime>
+    </File>
+    <File Include="Views/DatHang/ThanhToan.cshtml">
+      <publishTime>11/15/2024 10:45:14</publishTime>
+    </File>
+    <File Include="Views/DatHang/XacNhanThanhToan.cshtml">
+      <publishTime>11/15/2024 10:49:25</publishTime>
+    </File>
+    <File Include="Views/DatHang/XemGioHang.cshtml">
+      <publishTime>11/17/2024 20:42:03</publishTime>
+    </File>
+    <File Include="Views/DNDK/chinhSuaThongTin.cshtml">
+      <publishTime>11/05/2024 15:09:50</publishTime>
+    </File>
+    <File Include="Views/DNDK/DangKy.cshtml">
+      <publishTime>10/26/2024 23:22:38</publishTime>
+    </File>
+    <File Include="Views/DNDK/DangNhap.cshtml">
+      <publishTime>10/26/2024 23:23:14</publishTime>
+    </File>
+    <File Include="Views/DNDK/thongTinNguoiDung.cshtml">
+      <publishTime>11/05/2024 15:06:39</publishTime>
+    </File>
+    <File Include="Views/Home/chiTietSanPham.cshtml">
+      <publishTime>11/15/2024 14:27:29</publishTime>
+    </File>
+    <File Include="Views/Home/hienThidanhMuc.cshtml">
+      <publishTime>10/20/2024 23:20:10</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>11/15/2024 09:42:17</publishTime>
+    </File>
+    <File Include="Views/Home/trangSanPham.cshtml">
+      <publishTime>11/15/2024 14:27:59</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DanhGiaSanPham.cshtml">
+      <publishTime>11/16/2024 19:14:37</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DsDonHang.cshtml">
+      <publishTime>11/17/2024 07:49:02</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DsKhachHang.cshtml">
+      <publishTime>11/16/2024 08:58:59</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DsNhanVien.cshtml">
+      <publishTime>11/16/2024 08:54:16</publishTime>
+    </File>
+    <File Include="Views/QuanLy/Index.cshtml">
+      <publishTime>11/16/2024 00:18:35</publishTime>
+    </File>
+    <File Include="Views/QuanLy/NhapHang.cshtml">
+      <publishTime>11/17/2024 09:51:28</publishTime>
+    </File>
+    <File Include="Views/QuanLy/NhieuAnhSanPham.cshtml">
+      <publishTime>11/17/2024 08:55:45</publishTime>
+    </File>
+    <File Include="Views/QuanLy/SuaKhachHang.cshtml">
+      <publishTime>11/16/2024 09:06:49</publishTime>
+    </File>
+    <File Include="Views/QuanLy/SuaNhanVien.cshtml">
+      <publishTime>11/16/2024 08:51:36</publishTime>
+    </File>
+    <File Include="Views/QuanLy/SuaSanPham.cshtml">
+      <publishTime>11/17/2024 08:25:08</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThemKhachHang.cshtml">
+      <publishTime>11/16/2024 09:15:23</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThemNguoiDung.cshtml">
+      <publishTime>11/16/2024 08:03:23</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThemNhanVien.cshtml">
+      <publishTime>11/16/2024 08:41:47</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThemSanPham.cshtml">
+      <publishTime>11/16/2024 00:14:37</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThongKe.cshtml">
+      <publishTime>11/17/2024 13:19:33</publishTime>
+    </File>
+    <File Include="Views/QuanLy/XemChiTiet.cshtml">
+      <publishTime>11/17/2024 07:47:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>10/09/2024 21:30:55</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/02/2024 10:28:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutGioHang.cshtml">
+      <publishTime>12/02/2024 10:28:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutKhachHang.cshtml">
+      <publishTime>12/02/2024 10:28:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutNhanVien.cshtml">
+      <publishTime>11/17/2024 12:08:33</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/09/2024 21:30:55</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/09/2024 21:30:55</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/18/2024 00:20:46</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

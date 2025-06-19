@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ThietBiDienTu.Models.ChiTietDonHang>
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi Tiết Đơn Hàng</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Hình</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.SanPham.TenSP</td>
+                <td>
+                    <img src="/Content/HinhAnhSP/@(item.SanPham.HinhAnh + ".jpg")" alt="@item.SanPham.TenSP" style="width: 70px; height: 70px;" />
+                </td>
+                <td>@item.SoLuong</td>
+                <td>
+                    @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} vnđ", @item.DonGia)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

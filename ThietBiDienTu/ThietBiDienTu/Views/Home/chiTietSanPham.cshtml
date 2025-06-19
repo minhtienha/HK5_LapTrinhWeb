@@ -1,0 +1,237 @@
+﻿@model ThietBiDienTu.Models.SanPham
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "chiTietSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .product-detail {
+        display: flex;
+        flex-direction: row;
+        margin: 0 0 20px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-image img {
+        width: 84%;
+        height: 84%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .product-info {
+        padding: 20px;
+        width: 50%;
+    }
+
+    .product-name {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .product-name-lienquan {
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 3em;
+    }
+
+    .product-price {
+        font-size: 1.2em;
+        color: red;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .product-description {
+        margin-bottom: 15px;
+        font-size: 1em;
+        line-height: 1.5;
+    }
+
+    .product-nhacc, .product-soluongcon {
+        margin-bottom: 10px;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        width: 30px;
+        height: 30px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        border: none;
+        top: 50%;
+    }
+
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        width: 15px;
+        height: 15px;
+        background-color: white;
+    }
+</style>
+
+<h4 class="bg-primary text-white p-2">Chi tiết sản phẩm</h4>
+<div class="product-detail row">
+    <div id="productCarousel" class="carousel slide product-image col-4">
+        <div class="carousel-inner">
+            @if (ViewBag.DanhSachHinhAnh != null)
+            {
+                int index = 0;
+                foreach (var image in ViewBag.DanhSachHinhAnh)
+                {
+                    <div class="carousel-item @(index == 0 ? "active" : "")">
+                        <div class="d-flex justify-content-center">
+                            <img src="/Content/HinhAnhSP/@(image + ".jpg")" alt="@Model.TenSP" style="width: 84%; height: 250px; margin-bottom: 10px;" />
+                        </div>  
+                    </div>
+                    index++;
+                }
+            }
+        </div>
+        <!-- Thêm nút điều hướng trái và phải -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="visually-hidden"><<</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="visually-hidden">>></span>
+        </button>
+    </div>
+
+    <div class="product-info col-8">
+        <h1 class="product-name">@Model.TenSP</h1>
+        <span class="product-price text-danger mb-3 d-block">
+            Giá bán: @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} vnđ", @Model.GiaBan)
+        </span>
+        <p class="product-soluongcon">Số lượng còn: @Model.SoLuongTon</p>
+        <button class="btn btn-primary btn-sm add-to-cart" data-msp="@Model.MaSP"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+    </div>
+</div>
+
+<h4>Mô tả sản phẩm</h4>
+<div>
+    <p class="product-nhacc">Nhà cung cấp: @Model.MaNCC</p>
+    <p class="product-description">Mô tả: @Model.MoTa</p>
+</div>
+
+<h4>Đánh giá sản phẩm</h4>
+@if (ViewBag.dsDanhGia != null)
+{
+    <div class="product-reviews">
+        <table class="table table-bordered">
+            <thead class="table-danger">
+                <tr>
+                    <th>Tên KH</th>
+                    <th>Ngày đánh giá</th>
+                    <th>Nội dung</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dg in ViewBag.dsDanhGia)
+                {
+                    <tr>
+                        <td>@dg.TenKH</td>
+                        <td>@dg.NgayDanhGia</td>
+                        <td>@dg.NoiDung</td>
+                        <td>
+                            @if (Session["UserID"] != null && dg.MaKH != null && dg.MaKH == Session["UserID"].ToString())
+                            {
+                                <a href="/Home/XoaDanhGia?madg=@dg.MaDanhGia" class="btn btn-danger">Xoá</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<form action="/Home/danhGiaSanPham" method="post" style="width: 60%">
+    <input type="hidden" name="msp" value="@Model.MaSP" />
+    <textarea class="p-2" name="NoiDung" style="width: 100%; height: 120px"></textarea>
+    <div class="d-flex justify-content-end w-100">
+        <button type="submit" class="btn btn-success">Đánh giá</button>
+    </div>
+</form>
+
+<br />
+<br />
+<h4 class="bg-danger text-white p-2">Các sản phẩm liên quan</h4>
+<div class="row row-cols-5">
+    @if (ViewBag.spLienQuan != null)
+    {
+        foreach (var item in ViewBag.spLienQuan)
+        {
+            <div class="col" style="border: 1px solid #ddd; padding: 10px; margin: 5px;">
+                <img style="width: 100%; height: 180px" src="/Content/HinhAnhSP/@(item.HinhAnh + ".jpg")" alt="@item.TenSP" />
+                <p class="product-name-lienquan">@item.TenSP</p>
+                <div class="d-flex justify-content-center">
+                    <a href="@Url.Action("chiTietSanPham", "Home", new { msp = @item.MaSP })" class="btn btn-warning btn-sm">
+                        <i class="fas fa-info-circle"></i> Chi tiết
+                    </a>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function () {
+            const msp = this.getAttribute('data-msp');
+            const makh = '@Session["UserID"]'; // Đảm bảo rằng giá trị này có sẵn trong session của người dùng
+
+            // Kiểm tra xem makh có giá trị hợp lệ không
+            if (!makh) {
+                alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+                return;
+            }
+
+            // Tạo đối tượng XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/DatHang/ThemMatHang", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            // Gửi dữ liệu
+            xhr.send("msp=" + encodeURIComponent(msp) + "&maKH=" + encodeURIComponent(makh));
+
+            // Xử lý phản hồi
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert('Đã thêm vào giỏ hàng!');
+                    // Cập nhật giỏ hàng nếu cần
+                } else {
+                    alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');
+                }
+            };
+        });
+    });
+
+
+     window.onload = function() {
+         setTimeout(function() {
+             var msg = document.getElementById('alert-message');
+             if (msg) msg.style.display = 'none';
+             var err = document.getElementById('alert-error');
+             if (err) err.style.display = 'none';
+         }, 10000); // 3 giây
+     };
+
+
+
+
+</script>

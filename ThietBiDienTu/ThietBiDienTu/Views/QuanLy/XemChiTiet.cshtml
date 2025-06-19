@@ -1,0 +1,47 @@
+﻿@model ThietBiDienTu.Models.DonHang
+
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi Tiết Đơn Hàng</h2>
+
+<div>
+    <h6>Mã Đơn Hàng: @Model.MaDonHang</h6>
+    <h6>Khách Hàng: @Model.KhachHang.HoTen</h6>
+    <h6>
+        Ngày đặt: @(Model.NgayDat.ToString().Split(' ')[0])
+    </h6>
+    <h6>Trạng Thái: @Model.TinhTrangGiaoHang</h6>
+    <h6>
+        Tổng Tiền: @string.Format("{0:N0} vnđ", Model.TongTien)
+    </h6>
+</div>
+
+<h3>Danh Sách Sản Phẩm</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.ctdh)
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.SanPham.TenSP</td>
+                <td>@item.SoLuong</td>
+                <td>@string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} vnđ", item.DonGia)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("DsDonHang", "QuanLy")" class="btn btn-secondary">Quay lại danh sách đơn hàng</a>

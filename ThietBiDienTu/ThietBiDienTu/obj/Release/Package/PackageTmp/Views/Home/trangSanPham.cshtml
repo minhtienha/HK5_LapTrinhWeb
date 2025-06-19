@@ -1,0 +1,173 @@
+﻿@model PagedList.IPagedList<ThietBiDienTu.Models.SanPham>
+@using PagedList.Mvc;
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "trangSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .product-info {
+        text-align: center;
+    }
+
+    .product-name {
+        font-weight: bold;
+        font-size: 1em;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 3em;
+    }
+
+    .product-price {
+        font-size: 0.9rem;
+        color: red;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .product-btn {
+        border: none;
+        padding: 8px 12px;
+        margin: 0 4px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0 0;
+    }
+
+    .pagination a {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #3498db;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .pagination a:hover {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .pagination .active a {
+        background-color: #3498db;
+        color: white;
+        border: 1px solid #3498db;
+    }
+</style>
+
+<div class="d-flex justify-content-end mb-3">
+    <form action="@Url.Action("trangSanPham")" method="get">
+        <input type="hidden" name="searchText" value="@Request["searchText"]" />
+        <label for="locSapXep">Sắp xếp:</label>
+        <select name="locSapXep" id="locSapXep" onchange="this.form.submit()">
+            <option value="name_AtoZ" @(Request["locSapXep"] == "name_AtoZ" ? "selected" : "")>Tên A-Z</option>
+            <option value="name_ZtoA" @(Request["locSapXep"] == "name_ZtoA" ? "selected" : "")>Tên Z-A</option>
+            <option value="price_Tang" @(Request["locSapXep"] == "price_Tang" ? "selected" : "")>Giá từ thấp đến cao</option>
+            <option value="price_Giam" @(Request["locSapXep"] == "price_Giam" ? "selected" : "")>Giá từ cao đến thấp</option>
+        </select>
+    </form>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-3 mb-4">
+            <div class="product-card border rounded p-3 shadow-sm h-100">
+                <img class="product-image img-fluid mb-3" src="/Content/HinhAnhSP/@(item.HinhAnh + ".jpg")" alt="@item.TenSP" />
+                <div class="product-info">
+                    <p class="product-name font-weight-bold mb-1">@item.TenSP</p>
+                    <span class="product-price text-danger mb-3 d-block">
+                        Giá bán: @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} vnđ", @item.GiaBan)
+                    </span>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-primary btn-sm add-to-cart" data-msp="@item.MaSP"><i class="fas fa-cart-plus"></i> Thêm</button>
+                        <a href="@Url.Action("chiTietSanPham", "Home", new { msp = item.MaSP })" class="btn btn-warning btn-sm">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="w-100 d-flex justify-content-center">
+    <ul class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("trangSanPham", new { page, searchText = Request["searchText"], sortOrder = Request["sortOrder"] }))
+    </ul>
+</div>
+
+<script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function () {
+            const msp = this.getAttribute('data-msp');
+            const makh = '@Session["UserID"]'; // Đảm bảo rằng giá trị này có sẵn trong session của người dùng
+
+            // Kiểm tra xem makh có giá trị hợp lệ không
+            if (!makh) {
+                alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+                return;
+            }
+
+            // Tạo đối tượng XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/DatHang/ThemMatHang", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            // Gửi dữ liệu
+            xhr.send("msp=" + encodeURIComponent(msp) + "&maKH=" + encodeURIComponent(makh));
+
+            // Xử lý phản hồi
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    alert('Đã thêm vào giỏ hàng!');
+                    // Cập nhật giỏ hàng nếu cần
+                } else {
+                    alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');
+                }
+            };
+        });
+    });
+</script>

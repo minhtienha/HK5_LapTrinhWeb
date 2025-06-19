@@ -1,0 +1,85 @@
+﻿@model ThietBiDienTu.Models.KhachHang
+
+@{
+    ViewBag.Title = "Thêm Khách Hàng";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2 class="text-center">Thêm Khách Hàng</h2>
+
+@using (Html.BeginForm("ThemKhachHang", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container p-4 border rounded shadow-sm" style="background-color: #f9f9f9;">
+        <div class="form-group row">
+            @Html.Label("Mã khách hàng", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="MaKH" value="@ViewBag.MaKH" readonly />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Họ và tên", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Ngày sinh", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.NgaySinh, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(m => m.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Giới tính", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.DropDownListFor(m => m.GioiTinh, new SelectList(new[] { "Nam", "Nữ" }), "Chọn giới tính", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GioiTinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Số điện thoại", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.DienThoai, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập số điện thoại" } })
+                @Html.ValidationMessageFor(m => m.DienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Email", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập email" } })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Địa chỉ", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => m.DiaChi, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập địa chỉ" } })
+                @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.Label("Mật khẩu", null, new { @class = "col-sm-2 col-form-label font-weight-bold" })
+            <div class="col-sm-10">
+                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary ml-2" })
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,66 @@
+﻿@model List<ThietBiDienTu.Models.DanhGia>
+
+@{
+    ViewBag.Title = "Xem Đánh Giá Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2>Xem Đánh Giá Sản Phẩm</h2>
+
+<!-- Dropdown chọn sản phẩm -->
+@using (Html.BeginForm("DanhGiaSanPham", "NhanVien", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="masp">Chọn Sản Phẩm:</label>
+        <select id="masp" name="masp" class="form-control" onchange="this.form.submit();">
+            <option value="">Chọn sản phẩm</option>
+            @foreach (var sp in ViewBag.SanPhamList as List<ThietBiDienTu.Models.SanPham>)
+            {
+                <option value="@sp.MaSP" @(Request["masp"] == sp.MaSP ? "selected" : "")>
+                    @sp.TenSP
+                </option>
+            }
+        </select>
+    </div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã Đánh Giá</th>
+                <th>Tên Người Dùng</th>
+                <th>Nội Dung</th>
+                <th>Ngày Đánh Giá</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dg in Model)
+            {
+                <tr>
+                    <td>@dg.MaDanhGia</td>
+                    <td>@dg.KhachHang.HoTen</td>
+                    <td>@dg.NoiDung</td>
+                    <td>@(dg.NgayDanhGia.ToString().Split(' ')[0])</td>
+                    <td>
+                        @using (Html.BeginForm("XoaDanhGia", "NhanVien", FormMethod.Post))
+                        {
+                            @Html.Hidden("maDanhGia", dg.MaDanhGia)
+                            <button type="submit" class="btn btn-danger">Xoá</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (!string.IsNullOrEmpty(Request["masp"]))
+{
+    <p>Không có đánh giá nào cho sản phẩm này.</p>
+}
+else
+{
+    <p>Vui lòng chọn sản phẩm để xem đánh giá.</p>
+}

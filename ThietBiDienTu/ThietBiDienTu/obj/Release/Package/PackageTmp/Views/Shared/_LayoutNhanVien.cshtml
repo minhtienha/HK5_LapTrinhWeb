@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .footer-copy-right {
+            background-color: #dfdfdf;
+            padding: 14px 0;
+        }
+
+        .footer-copy-right p {
+            font-size: 14px;
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row d-flex justify-content-between align-items-center" style="background: darkslategray; padding: 0 30px">
+        <div style="color: #079d57;">
+            <h1>Quản Lý Nhân Viên</h1>
+        </div>
+
+        <div class="text-white" style="display: flex; align-items: center;">
+            @if (Session["UserName"] != null)
+            {
+                <span>Xin chào, </span>
+                <a href="@Url.Action("thongTinNguoiDung", "DNDK", new { makh = Session["UserID"] })" class="text-white ml-2" style="margin-left: 5px;">
+                    @Session["UserName"]
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <span class="mx-2">/</span>
+                <a href="/DNDK/DangXuat" class="text-white" style="margin-left: 5px;">Đăng xuất</a>
+            }
+            else
+            {
+                <a href="/DNDK/DangNhap" class="text-white" style="margin-right: 5px;">Đăng nhập</a>
+                <span class="mx-2">/</span>
+                <a href="/DNDK/DangKy" class="text-white" style="margin-left: 5px;">Đăng ký</a>
+            }
+        </div>
+    </div>
+      
+    <div class="row">
+        <div class="col-3" style="background-color: darkslategray">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("Index","QuanLy")">Danh sách Sản Phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("DsNhanVien","QuanLy")">Quản lý Nhân Viên</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("DsKhachHang","QuanLy")">Quản lý Người Dùng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("DanhGiaSanPham", "QuanLy")">Quản lý Đánh Giá Sản Phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("DsDonHang","QuanLy")">Xem và Xác Nhận đơn hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("ThongKe","QuanLy")">Thống kê doanh thu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="@Url.Action("NhapHang","QuanLy")">Nhập Hàng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="footer-copy-right">
+        <div class="container">
+            <p> © 2024. Nhóm 5.</p>
+            <p>Địa chỉ: 140 Lê Trọng Tấn, P.Tây Thạnh, Q.Tân Phú, TP.Hồ Chí Minh.</p>
+            <p>Điện thoại: 028 38125960. Email: nhom5@gmail.edu.vn.</p>
+        </div>
+    </div>
+</body>
+</html>

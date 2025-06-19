@@ -1,0 +1,62 @@
+﻿@using System.Globalization
+@{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Message</div>
+    }
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["ErrorMessage"]</div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Message"]</div>
+}
+
+<table class="table table-bordered">
+    <thead class="table-info">
+        <tr>
+            <th>STT</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Số Lượng</th>
+            <th>Đơn Giá</th>
+            <th>Tổng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            var item = Model[i];
+            <tr>
+                <td>@(i + 1)</td>  <!-- Hiển thị thứ tự, bắt đầu từ 1 -->
+                <td>@item.SanPham.TenSP</td>
+                <td>
+                    <img src="/Content/HinhAnhSP/@(item.SanPham.HinhAnh + ".jpg")" alt="@item.SanPham.TenSP" style="width: 70px; height: 70px;" />
+                </td>
+                <td>@item.SoLuong</td>
+                <td>
+                    @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} đ", item.SanPham.GiaBan)
+                </td>
+                <td>
+                    @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} đ", item.SoLuong * item.SanPham.GiaBan)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-12 text-right">
+        <div class="alert alert-info">
+            <strong>Tổng Giá Trị Giỏ Hàng:</strong>
+            @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} đ", ViewBag.TongGia)
+        </div>
+        <!-- Nút thanh toán -->
+        <a href="@Url.Action("ChinhSuaGioHang", "DatHang", new { maKH = ViewBag.MaKH })" class="btn btn-warning mr-2">Chỉnh sửa giỏ hàng</a>
+
+        <a href="@Url.Action("DatHang", "DatHang")" class="btn btn-primary">Đặt hàng</a>
+
+    </div>
+</div>

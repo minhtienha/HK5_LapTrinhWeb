@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ThietBiDienTu.Models.DonHang>
+@using System.Globalization;
+
+@{
+    ViewBag.Title = "Lịch Sử Đặt Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";  <!-- Layout của bạn -->
+}
+
+<h2>Lịch Sử Đặt Hàng</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Đơn</th>
+            <th>Ngày Đặt Hàng</th>
+            <th>Tình Trạng Giao Hàng</th>
+            <th>Tổng Tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donHang in Model)
+        {
+            <tr>
+                <td>@donHang.MaDonHang</td>
+                <td>@donHang.NgayDat.ToString("dd/MM/yyyy")</td>
+                <td>@donHang.TinhTrangGiaoHang</td>
+                <td>
+                   @string.Format(CultureInfo.GetCultureInfo("vi-VN"), "{0:N0} vnđ", donHang.TongTien)
+                </td>
+                <td>
+                    <a href="@Url.Action("chiTietLichSuDatHang", "DatHang", new { maDH = @donHang.MaDonHang })" class="btn btn-info">Xem Chi Tiết</a>
+                    <!-- Kiểm tra trạng thái giao hàng -->
+                    @if (donHang.TinhTrangGiaoHang == "Đang xử lý")
+                    {
+                        <a href="@Url.Action("HuyDon", "DatHang", new { maDH = donHang.MaDonHang })" class="btn btn-danger">Huỷ Đơn</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

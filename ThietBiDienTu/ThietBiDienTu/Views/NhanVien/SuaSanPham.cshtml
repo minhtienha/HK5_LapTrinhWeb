@@ -1,0 +1,45 @@
+﻿@model ThietBiDienTu.Models.SanPham
+
+@{
+    ViewBag.Title = "Sửa Sản Phẩm";
+    Layout = "~/Views/Shared/_LayoutNhanVien2.cshtml";
+}
+
+<h2>Sửa Sản Phẩm</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="TenSP">Tên sản phẩm</label>
+        @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @id = "TenSP", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.TenSP)
+    </div>
+
+    <div class="form-group">
+        <label for="GiaBan">Giá bán</label>
+        @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @id = "GiaBan", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.GiaBan)
+    </div>
+
+    <div class="form-group">
+        <label for="MoTa">Mô tả</label>
+        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @id = "MoTa", @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.MoTa)
+    </div>
+
+    <div class="form-group">
+        <label for="MaLoai">Loại sản phẩm</label>
+        @Html.DropDownListFor(model => model.MaLoai, (SelectList)ViewBag.MaLoai, new { @id = "MaLoai", @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="MaNCC">Nhà cung cấp</label>
+        @Html.DropDownListFor(model => model.MaNCC, (SelectList)ViewBag.MaNCC, new { @id = "MaNCC", @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+}
+
+@Html.ActionLink("Chỉnh sửa hình ảnh sản phẩm", "NhieuAnhSanPham", "NhanVien", new { masp = Model.MaSP }, new { @class = "btn btn-secondary" })

@@ -1,0 +1,51 @@
+﻿@model ThietBiDienTu.Models.KhachHang
+
+<div class="container mt-4">
+    <h2>Thông Tin Người Dùng</h2>
+    <div class="card mx-auto" style="width: 600px">
+        <div class="card-body">
+            <div class="form-group d-flex align-items-center">
+                <label for="hoTen" class="mr-2 font-weight-bold" style="width: 150px;">Họ Tên:</label>
+                <p class="form-control-plaintext">@Model.HoTen</p>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label for="ngaySinh" class="mr-2 font-weight-bold" style="width: 150px;">Ngày Sinh:</label>
+                <p class="form-control-plaintext">@String.Format("{0:dd/MM/yyyy}", Model.NgaySinh)</p>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label for="dienThoai" class="mr-2 font-weight-bold" style="width: 150px;">Điện Thoại:</label>
+                <p class="form-control-plaintext">@Model.DienThoai</p>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label for="email" class="mr-2 font-weight-bold" style="width: 150px;">Email:</label>
+                <p class="form-control-plaintext">@Model.Email</p>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label for="matKhau" class="mr-2 font-weight-bold" style="width: 150px;">Mật Khẩu:</label>
+                <input id="matKhau" type="password" class="form-control-plaintext" value="@Model.MatKhau" readonly />
+                <button type="button" class="btn btn-link" id="togglePassword">Hiện</button>
+            </div>
+            <div class="form-group d-flex align-items-center">
+                <label for="gioiTinh" class="mr-2 font-weight-bold" style="width: 150px;">Giới Tính:</label>
+                <p class="form-control-plaintext">@Model.GioiTinh</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="@Url.Action("chinhSuaThongTin", "DNDK", new { makh = Session["UserID"] })" class="btn btn-danger text-white">Chỉnh sửa thông tin</a>
+</div>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordDisplay = document.getElementById('matKhau');
+        const button = this;
+
+        if (passwordDisplay.textContent === '******') {
+            passwordDisplay.textContent = '@Model.MatKhau';
+            button.textContent = 'Ẩn';
+        } else {
+            passwordDisplay.textContent = '******';
+            button.textContent = 'Hiện';
+        }
+    });
+</script>
